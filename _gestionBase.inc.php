@@ -141,6 +141,18 @@ function estModifOffreCorrecte($connexion, $idEtab, $nombreChambres)
    return ($nombreChambres>=$nbOccup);
 }
 
+function nbChambresMax($connexion, $idEtab)
+{
+   $req = "SELECT nombreChambresOffertes FROM Etablissement WHERE idEtab = '$idEtab'";
+   $rsEtab = $connexion->query($req);
+   $lgEtab = $rsEtab->fetchAll();
+   foreach($lgEtab as $row)
+   {
+      $nbMax = $row['nombreChambresOffertes'];
+   }
+   return $nbMax;
+}
+
 // FONCTIONS RELATIVES AUX GROUPES
 
 function obtenirReqIdNomGroupesAHeberger()

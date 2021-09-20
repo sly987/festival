@@ -40,7 +40,7 @@ if ($nbEtab!=0)
       // AFFICHAGE DE LA 1ÈRE LIGNE D'EN-TÊTE 
       echo "
       <tr class='enTeteTabQuad'>
-         <td colspan='2' align='left'><strong>$nomEtab</strong>&nbsp;
+         <td colspan='3' align='left'><strong>$nomEtab</strong>&nbsp;
          (Offre : $nbOffre&nbsp;&nbsp;Disponibilités : $nbChLib)
          </td>
       </tr>";
@@ -48,8 +48,9 @@ if ($nbEtab!=0)
       // AFFICHAGE DE LA 2ÈME LIGNE D'EN-TÊTE 
       echo "
       <tr class='ligneTabQuad'>
-         <td width='65%' align='left'><i><strong>Nom groupe</strong></i></td>
-         <td width='35%' align='left'><i><strong>Chambres attribuées</strong></i>
+         <td width='50%' align='left'><i><strong>Nom groupe</strong></i></td>
+         <td width = '25%' align ='left'><i><strong>Pays groupe</strong></i></td>
+         <td width='25%' align='left'><i><strong>Chambres attribuées</strong></i>
          </td>
       </tr>";
         
@@ -67,12 +68,14 @@ if ($nbEtab!=0)
          $nomPays=$row['nomPays'];
          echo "
          <tr class='ligneTabQuad'>
-            <td width='65%' align='left'>$nomGroupe ($nomPays)</td>";
+            <td width='50%' align='left'>$nomGroupe </td>
+            <td width = '25%' align ='left'>$nomPays</td>";
+
          // On recherche si des chambres ont déjà été attribuées à ce groupe
          // dans l'établissement
          $nbOccupGroupe=obtenirNbOccupGroupe($connexion, $idEtab, $idGroupe);
          echo "
-            <td width='35%' align='left'>$nbOccupGroupe</td>
+            <td width='25%' align='left'>$nbOccupGroupe</td>
          </tr>";
       } // Fin de la boucle sur les groupes
       

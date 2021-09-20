@@ -50,9 +50,15 @@ class='tabNonQuadrille'>
          }
          else
          {
+
             $nb = obtenirNbOccup($connexion, $id);
+            $nbMax = nbChambresMax($connexion, $id);
+            if($nb == $nbMax)
+            {
+               echo "<td width='16%'>complet </td>";
+            }
             echo "
-            <td width='16%'>&nbsp ".$nb." chambres occupés </td>";          
+            <td width='16%'> ".$nb." chambres occupés </td>";          
 			}
 			echo "
       </tr>";
